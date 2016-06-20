@@ -35,7 +35,7 @@ int main(void) {
     const char *buffer;
     int addr = 0x50; // Addr of SL030
 
-    sprintf(filename,"/dev/i2c-3");
+    sprintf(filename,"/dev/i2c-2");
     if ((file = open(filename,O_RDWR)) < 0) {
         printf("Failed to open the bus.");
         exit(1);
@@ -57,8 +57,8 @@ int main(void) {
         // ERROR HANDLING: i2c transaction failed
         printf("Failed to write to the i2c bus.\n");
         buffer = strerror(errno);
-        printf(buffer);
-        printf("\n\n");
+        puts(buffer);
+        printf("\n");
     } else {
     printf("write success\n\n");
     }
@@ -79,8 +79,8 @@ int main(void) {
         // ERROR HANDLING: i2c transaction failed
         printf("Failed to read from the i2c bus.\n");
         buffer = strerror(errno);
-        printf(buffer);
-        printf("\n\n");
+        puts(buffer);
+        printf("\n");
     return 1;
     }
     len = (unsigned short)buf[0];
